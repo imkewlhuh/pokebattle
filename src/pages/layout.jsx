@@ -56,11 +56,15 @@ export default function Arena() {
     const [teams, setTeams] = useState([])
 
     const [springs, api] = useSpring(() => ({
+        delay: 100,
         from: { x: -2000 },
-        to: { x: 0, y: 160 }
+        to: { x: 0, y: 160 },
+        config: {
+            duration: 550
+        }
     }))
     const [springsA, apiA] = useSpring(() => ({
-        from: { x: -3500, y: -20 },
+        from: { x: -3500, y: -30 }
     }))
     const [springsT1, apiT1] = useSpring(() => ({
         from: { x: -4000 },
@@ -81,20 +85,27 @@ export default function Arena() {
     const handleClick = () => {
         api.start({
             from: { x: 0 },
-            to: { x: -1000 },
+            to: { x: -2000 },
+            config: { duration: 400 }
         })
         apiA.start({
+            delay: 150,
             from: { x: -3500 },
-            to: { x: 0 }
+            to: { x: 0 },
+            config: {
+                duration: 400
+            }
         })
         apiT1.start({
+            delay: 250,
             from: { x: -4000 },
             to: [
                 { x: -2000 },
-                { x: 0 }
+                { x: 0 },
             ]
         })
         apiT2.start({
+            delay: 350,
             from: { x: -4000 },
             to: [
                 { x: -3000 },
@@ -107,9 +118,17 @@ export default function Arena() {
     useEffect(() => {
         const getTeams = async () => {
             const teamdata = [];
-            for (let i = 0; i < 13; i++) {
+            const id = [];
+            while (id.length <= 12) {
+                let num = gen1()
+                if (!id.includes(num)) {
+                id.push(num)
+                }
+            }
+            console.log(id);
+            for (let i = 0; i < id.length; i++) {
                 const mon = await fetch(
-                    `${API_URL}/pokemon/${gen1()}`);
+                    `${API_URL}/pokemon/${id[i]}`);
                 mon.json().then(mon => {
                     teamdata.push(mon);
                 });
@@ -144,7 +163,7 @@ export default function Arena() {
                     <Grid container >
                         {
                             team1 ?
-                                <Grid item xs={4} sx={{ paddingLeft: "1em" }} className="team1">
+                                <Grid item xs={4} sx={{ paddingLeft: "2em" }} className="team1">
                                     <Grid container sx={{ width: 500 }}>
                                         {
                                             team1.map(pokemon => (
