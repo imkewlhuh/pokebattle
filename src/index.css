@@ -28,6 +28,10 @@
     height: 15vh;
 }
 
+.reset {
+    position: fixed;
+}
+
 .arena {
     background-image: url("./vs.png");
     background-size: cover;

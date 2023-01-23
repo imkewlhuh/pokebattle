@@ -53,7 +53,8 @@ function DisplayType(props) {
 }
 
 export default function Arena() {
-    const [teams, setTeams] = useState([])
+    const [teams, setTeams] = useState([]);
+    const [reset, setReset] = useState(false);
 
     const [springs, api] = useSpring(() => ({
         delay: 100,
@@ -68,18 +69,12 @@ export default function Arena() {
     }))
     const [springsT1, apiT1] = useSpring(() => ({
         from: { x: -4000 },
-        to: [
-            { x: -2000 },
-            { x: 0 }
-        ]
     }))
     const [springsT2, apiT2] = useSpring(() => ({
         from: { x: -4000 },
-        to: [
-            { x: -3000 },
-            { x: -2000 },
-            { x: 0 }
-        ]
+    }))
+    const [springsR, apiR] = useSpring(() => ({
+        from: { x: 450, y: 25, opacity: 0 }
     }))
 
     const handleClick = () => {
@@ -113,32 +108,62 @@ export default function Arena() {
                 { x: 0 }
             ]
         })
+        apiR.start({
+            delay: 2900,
+            from: { opacity: 0 },
+            to: { opacity: 1 },
+            config: { duration: 500 }
+        })
     }
 
-    useEffect(() => {
-        const getTeams = async () => {
-            const teamdata = [];
-            const id = [];
-            while (id.length <= 12) {
-                let num = gen1()
-                if (!id.includes(num)) {
-                id.push(num)
-                }
+    const handleReset = () => {
+        apiR.start({
+            from: { opacity: 1 },
+            to: { opacity: 0 }
+        })
+        apiA.start({
+            from: { x: 0 },
+            to: { x: -3500 },
+            config: {
+                duration: 400
             }
-            console.log(id);
-            for (let i = 0; i < id.length; i++) {
-                const mon = await fetch(
-                    `${API_URL}/pokemon/${id[i]}`);
-                mon.json().then(mon => {
-                    teamdata.push(mon);
-                });
-            };
-            setTeams(teamdata);
+        })
+        api.start({
+            from: { x: -2000 },
+            to: { x: 0 },
+            config: { duration: 400 }
+        })
+    }
+
+    let savedTeams = JSON.parse(localStorage.getItem("savedTeams"))
+    console.log(savedTeams)
+
+    useEffect(() => {
+        if (savedTeams != null) {
+            setTeams(savedTeams);
+        } else {
+            const getTeams = async () => {
+                const teamdata = [];
+                const id = [];
+                while (id.length <= 12) {
+                    let num = gen1()
+                    if (!id.includes(num)) {
+                        id.push(num)
+                    }
+                }
+                console.log(id);
+                for (let i = 0; i < id.length; i++) {
+                    const mon = await fetch(
+                        `${API_URL}/pokemon/${id[i]}`);
+                    mon.json().then(mon => {
+                        teamdata.push(mon);
+                    });
+                };
+                setTeams(teamdata);
+            }
+            getTeams();
         };
-        getTeams();
-
-
-    }, []);
+    }, [reset]);
 
     console.log(teams);
 
@@ -151,6 +176,16 @@ export default function Arena() {
         <div className="layout">
             <div className="header">
             </div>
+            <animated.div className="reset" style={{ ...springsR }} >
+                <Fab className="resetti" variant="extended" size="medium" color="error" onClick={() => {
+                        localStorage.clear();
+                        savedTeams = null;
+                        handleReset();
+                        setReset(state => !state);
+                }}>
+                    Reset
+                </Fab>
+            </animated.div>
             <animated.div style={{ ...springs }} >
                 <Fab className="ready" variant="extended" size="medium" color="error" onClick={() => {
                     handleClick()
@@ -169,7 +204,9 @@ export default function Arena() {
                                             team1.map(pokemon => (
                                                 <Grid item xs={6} sx={{ textAlign: "center" }} key={pokemon.id} className="mon1">
                                                     <animated.div style={{ ...springsT1 }}>
-                                                        <Link to={`/dex/${pokemon.name}`} style={{ textDecoration: "none", color: "black" }} >
+                                                        <Link to={`/dex/${pokemon.name}`} style={{ textDecoration: "none", color: "black" }} onClick={() => {
+                                                            localStorage.setItem("savedTeams", JSON.stringify(teams));
+                                                        }} >
                                                             <img className="team1Icons" src={pokemon.sprites["front_default"]} />
                                                             <p className="team1Names">{capitalize(pokemon.name)}</p>
                                                         </Link>
@@ -205,7 +242,9 @@ export default function Arena() {
                                             team2.map(pokemon => (
                                                 <Grid item xs={6} sx={{ textAlign: "center" }} key={pokemon.id} className="mon2">
                                                     <animated.div style={{ ...springsT2 }}>
-                                                        <Link to={`/dex/${pokemon.name}`} style={{ textDecoration: "none", color: "black" }} >
+                                                        <Link to={`/dex/${pokemon.name}`} style={{ textDecoration: "none", color: "black" }} onClick={() => {
+                                                            localStorage.setItem("savedTeams", JSON.stringify(teams));
+                                                        }} >
                                                             <img className="team2Icons" src={pokemon.sprites["front_default"]} />
                                                             <p className="team2Names">{capitalize(pokemon.name)}</p>
                                                         </Link>
