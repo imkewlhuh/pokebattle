@@ -74,7 +74,7 @@ export default function Arena() {
         from: { x: -4000 },
     }))
     const [springsR, apiR] = useSpring(() => ({
-        from: { x: 450, y: 25, opacity: 0 }
+        from: { x: -2000, y:25, opacity: 0},
     }))
 
     const handleClick = () => {
@@ -110,16 +110,19 @@ export default function Arena() {
         })
         apiR.start({
             delay: 2900,
-            from: { opacity: 0 },
-            to: { opacity: 1 },
+            from: { x: -2000, y:25, opacity: 0},
+            to: [
+                { x: 450, y: 25, opacity: 0 },
+                { opacity: 1 }
+            ],
             config: { duration: 500 }
         })
     }
 
     const handleReset = () => {
         apiR.start({
-            from: { opacity: 1 },
-            to: { opacity: 0 }
+            from: { x: 450, y: 25, opacity: 1 },
+            to: { x: -2000, y:25, opacity: 0}
         })
         apiA.start({
             from: { x: 0 },
