@@ -122,7 +122,7 @@ export default function Arena() {
     const handleReset = () => {
         apiR.start({
             from: { x: 450, y: 25, opacity: 1 },
-            to: { x: -2000, y:25, opacity: 0}
+            to: { x: -2000, y:25, opacity: 0}   
         })
         apiA.start({
             from: { x: 0 },
