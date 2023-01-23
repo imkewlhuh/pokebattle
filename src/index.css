@@ -1,0 +1,96 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Pokemon";
+}
+
+@font-face {
+    font-family: "Pokemon";
+    src: local("Pokemon"),
+    url("./fonts/Pokemon-GB.ttf");
+}
+
+.layout {
+    background-image: url("./arena.jpg");
+    background-size: cover;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.header {
+    background-image: url("./header.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 100vw;
+    height: 15vh;
+}
+
+.arena {
+    background-image: url("./vs.png");
+    background-size: cover;
+    width: 100vw;
+}
+
+.team1 {
+    display: grid;
+    grid-template-columns: auto 2fr;
+    text-align: center;
+    padding: 1em;
+}
+
+.team1Icons {
+    height: 80px;
+}
+
+.team1Names {
+    font-size: small;
+}
+
+.mon1 {
+    display: flex;
+    justify-content: center;
+}
+
+.team2 {
+    display: grid;
+    grid-template-columns: auto 2fr;
+    text-align: center;
+    padding: 1em;
+}
+
+.team2Icons {
+    height: 80px;
+}
+
+.team2Names {
+    font-size: small;
+}
+
+.mon2 {
+    display: flex;
+    justify-content: center;
+}
+
+.vs {
+    background-image: url("./v-s.png");
+    background-size: cover;
+    opacity: 0.95;
+}
+
+.dex {
+    background-image: url(./dex.png);
+    background-size: cover;
+    height: 100vh;
+}
+
+.dexMon {
+    margin-top: 2em;
+    text-align: center;
+}
+
+.dexIcon {
+    width: 400px;
+}
