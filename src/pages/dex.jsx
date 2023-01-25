@@ -1,7 +1,7 @@
 import { useLoaderData, Link } from "react-router-dom";
 import { Card, CardContent, Grid, Fab, Chip } from "@mui/material";
 import CatchingPokemonIcon from '@mui/icons-material/CatchingPokemon';
-import { BugIcon, DarkIcon, DragonIcon, ElectricIcon, FairyIcon, FightingIcon, FireIcon, FlyingIcon, GhostIcon, GrassIcon, GroundIcon, IceIcon, NormalIcon, PoisonIcon, PsychicIcon, RockIcon, SteelIcon, WaterIcon } from "../assets/icons";
+import { DisplayType } from "./layout";
 
 const types = ["normal", "fighting", "flying", "poison",
     "ground", "rock", "bug", "ghost",
@@ -39,7 +39,7 @@ function Effective(props) {
         case "normal":
             return <Card sx={{ bgcolor: "#A0A29F", maxWidth: 350, minHeight: "50vh" }} >
                 <br />
-                <Chip sx={{ border: "1px solid" }} icon={<NormalIcon />} label="Normal" />
+                <DisplayType type="normal" />
                 <CardContent>
                     <li>{NV} to {listTypes([5, 15])}</li>
                     <br />
@@ -53,7 +53,7 @@ function Effective(props) {
         case "fighting":
             return <Card sx={{ bgcolor: "#D3425F", maxWidth: 350, minHeight: "50vh" }} >
                 <br />
-                <Chip sx={{ border: "1px solid" }} icon={<FightingIcon />} label="Fighting" />
+                <DisplayType type="fighting" />
                 <CardContent>
                     <li>{SE} to {listTypes([0, 5, 15, 13, 16])}</li>
                     <br />
@@ -69,7 +69,7 @@ function Effective(props) {
         case "flying":
             return <Card sx={{ bgcolor: "#A1BBEC", maxWidth: 350, minHeight: "50vh" }} >
                 <br />
-                <Chip sx={{ border: "1px solid" }} icon={<FlyingIcon />} label="Flying" />
+                <DisplayType type="flying" />
                 <CardContent>
                     <li>{SE} to {listTypes([1, 6, 10])}</li>
                     <br />
@@ -85,7 +85,7 @@ function Effective(props) {
         case "poison":
             return <Card sx={{ bgcolor: "#B763CF", maxWidth: 350, minHeight: "50vh" }} >
                 <br />
-                <Chip sx={{ border: "1px solid" }} icon={<PoisonIcon />} label="Poison" />
+                <DisplayType type="poison" />
                 <CardContent>
                     <li>{SE} to {listTypes([10, 17])}</li>
                     <br />
@@ -101,7 +101,7 @@ function Effective(props) {
         case "ground":
             return <Card sx={{ bgcolor: "#DA7C4D", maxWidth: 350, minHeight: "50vh" }} >
                 <br />
-                <Chip sx={{ border: "1px solid" }} icon={<GroundIcon />} label="Ground" />
+                <DisplayType type="ground" />
                 <CardContent>
                     <li>{SE} to {listTypes([3, 5, 15, 8, 11])}</li>
                     <br />
@@ -119,7 +119,7 @@ function Effective(props) {
         case "rock":
             return <Card sx={{ bgcolor: "#C9BB8A", maxWidth: 350, minHeight: "50vh" }} >
                 <br />
-                <Chip sx={{ border: "1px solid" }} icon={<RockIcon />} label="Rock" />
+                <DisplayType type="rock" />
                 <CardContent>
                     <li>{SE} to {listTypes([2, 6, 8, 13])}</li>
                     <br />
@@ -133,7 +133,7 @@ function Effective(props) {
         case "bug":
             return <Card sx={{ bgcolor: "#92BC2C", maxWidth: 350, minHeight: "50vh" }} >
                 <br />
-                <Chip sx={{ border: "1px solid" }} icon={<BugIcon />} label="Bug" />
+                <DisplayType type="bug" />
                 <CardContent>
                     <li>{SE} to {listTypes([10, 12, 16])}</li>
                     <br />
@@ -147,7 +147,7 @@ function Effective(props) {
         case "ghost":
             return <Card sx={{ bgcolor: "#5F6DBC", maxWidth: 350, minHeight: "50vh" }} >
                 <br />
-                <Chip sx={{ border: "1px solid" }} icon={<GhostIcon />} label="Ghost" />
+                <DisplayType type="ghost" />
                 <CardContent>
                     <li>{SE} to {listTypes([7, 12])}</li>
                     <br />
@@ -165,7 +165,7 @@ function Effective(props) {
         case "steel":
             return <Card sx={{ bgcolor: "#5695A3", maxWidth: 350, minHeight: "50vh" }} >
                 <br />
-                <Chip sx={{ border: "1px solid" }} icon={<SteelIcon />} label="Steel" />
+                <DisplayType type="steel" />
                 <CardContent>
                     <li>{SE} to {listTypes([5, 13, 17])}</li>
                     <br />
@@ -181,7 +181,7 @@ function Effective(props) {
         case "fire":
             return <Card sx={{ bgcolor: "#FBA54C", maxWidth: 350, minHeight: "50vh" }} >
                 <br />
-                <Chip sx={{ border: "1px solid" }} icon={<FireIcon />} label="Fire" />
+                <DisplayType type="fire" />
                 <CardContent>
                     <li>{SE} to {listTypes([6, 15, 10, 13])}</li>
                     <br />
@@ -195,7 +195,7 @@ function Effective(props) {
         case "water":
             return <Card sx={{ bgcolor: "#539DDF", maxWidth: 350, minHeight: "50vh" }} >
                 <br />
-                <Chip sx={{ border: "1px solid" }} icon={<WaterIcon />} label="Water" />
+                <DisplayType type="water" />
                 <CardContent>
                     <li>{SE} to {listTypes([4, 5, 8])}</li>
                     <br />
@@ -209,7 +209,7 @@ function Effective(props) {
         case "grass":
             return <Card sx={{ bgcolor: "#5FBD58", maxWidth: 350, minHeight: "50vh" }} >
                 <br />
-                <Chip sx={{ border: "1px solid" }} icon={<GrassIcon />} label="Grass" />
+                <DisplayType type="grass" />
                 <CardContent>
                     <li>{SE} to {listTypes([4, 5, 9])}</li>
                     <br />
@@ -223,7 +223,7 @@ function Effective(props) {
         case "electric":
             return <Card sx={{ bgcolor: "#F2D94E", maxWidth: 350, minHeight: "50vh" }} >
                 <br />
-                <Chip sx={{ border: "1px solid" }} icon={<ElectricIcon />} label="Electric" />
+                <DisplayType type="electric" />
                 <CardContent>
                     <li>{SE} to {listTypes([2, 9])}</li>
                     <br />
@@ -239,7 +239,7 @@ function Effective(props) {
         case "psychic":
             return <Card sx={{ bgcolor: "#FA8581", maxWidth: 350, minHeight: "50vh" }} >
                 <br />
-                <Chip sx={{ border: "1px solid" }} icon={<PsychicIcon />} label="Psychic" />
+                <DisplayType type="psychic" />
                 <CardContent>
                     <li>{SE} to {listTypes([1, 3])}</li>
                     <br />
@@ -255,7 +255,7 @@ function Effective(props) {
         case "ice":
             return <Card sx={{ bgcolor: "#75D0C1", maxWidth: 350, minHeight: "50vh" }} >
                 <br />
-                <Chip sx={{ border: "1px solid" }} icon={<IceIcon />} label="Ice" />
+                <DisplayType type="ice" />
                 <CardContent>
                     <li>{SE} to {listTypes([2, 4, 10, 14])}</li>
                     <br />
@@ -269,7 +269,7 @@ function Effective(props) {
         case "dragon":
             return <Card sx={{ bgcolor: "#0C69C8", maxWidth: 350, minHeight: "50vh" }} >
                 <br />
-                <Chip sx={{ border: "1px solid" }} icon={<DragonIcon />} label="Dragon" />
+                <DisplayType type="dragon" />
                 <CardContent>
                     <li>{SE} to {listTypes([14])}</li>
                     <br />
@@ -285,7 +285,7 @@ function Effective(props) {
         case "dark":
             return <Card sx={{ bgcolor: "#595761", maxWidth: 350, minHeight: "50vh" }} >
                 <br />
-                <Chip sx={{ border: "1px solid" }} icon={<DarkIcon />} label="Dark" />
+                <DisplayType type="dark" />
                 <CardContent>
                     <li>{SE} to {listTypes([7, 12])}</li>
                     <br />
@@ -301,7 +301,7 @@ function Effective(props) {
         case "fairy":
             return <Card sx={{ bgcolor: "#EE90E6", maxWidth: 350, minHeight: "50vh" }} >
                 <br />
-                <Chip sx={{ border: "1px solid" }} icon={<FairyIcon />} label="Fairy" />
+                <DisplayType type="fairy" />
                 <CardContent>
                     <li>{SE} to {listTypes([1, 14, 16])}</li>
                     <br />

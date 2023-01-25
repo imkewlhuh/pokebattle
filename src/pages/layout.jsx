@@ -11,44 +11,44 @@ const gen1 = () => {
 
 const API_URL = "https://pokeapi.co/api/v2";
 
-function DisplayType(props) {
+export function DisplayType(props) {
     switch (props.type) {
         case "bug":
-            return <Chip sx={{ bgcolor: "#92BC2C" }} size="small" icon={<BugIcon />} label="Bug" />;
+            return <Chip sx={{ bgcolor: "#92BC2C", border: "1px solid" }} size="small" icon={<BugIcon />} label="Bug" />;
         case "dark":
-            return <Chip sx={{ bgcolor: "#595761" }} size="small" icon={<DarkIcon />} label="Dark" />;
+            return <Chip sx={{ bgcolor: "#595761", border: "1px solid" }} size="small" icon={<DarkIcon />} label="Dark" />;
         case "dragon":
-            return <Chip sx={{ bgcolor: "#0C69C8" }} size="small" icon={<DragonIcon />} label="Dragon" />;
+            return <Chip sx={{ bgcolor: "#0C69C8", border: "1px solid" }} size="small" icon={<DragonIcon />} label="Dragon" />;
         case "electric":
-            return <Chip sx={{ bgcolor: "#F2D94E" }} size="small" icon={<ElectricIcon />} label="Electric" />;
+            return <Chip sx={{ bgcolor: "#F2D94E", border: "1px solid" }} size="small" icon={<ElectricIcon />} label="Electric" />;
         case "fairy":
-            return <Chip sx={{ bgcolor: "#EE90E6" }} size="small" icon={<FairyIcon />} label="Fairy" />;
+            return <Chip sx={{ bgcolor: "#EE90E6", border: "1px solid" }} size="small" icon={<FairyIcon />} label="Fairy" />;
         case "fighting":
-            return <Chip sx={{ bgcolor: "#D3425F" }} size="small" icon={<FightingIcon />} label="Fighting" />;
+            return <Chip sx={{ bgcolor: "#D3425F", border: "1px solid" }} size="small" icon={<FightingIcon />} label="Fighting" />;
         case "fire":
-            return <Chip sx={{ bgcolor: "#FBA54C" }} size="small" icon={<FireIcon />} label="Fire" />;
+            return <Chip sx={{ bgcolor: "#FBA54C", border: "1px solid" }} size="small" icon={<FireIcon />} label="Fire" />;
         case "flying":
-            return <Chip sx={{ bgcolor: "#A1BBEC" }} size="small" icon={<FlyingIcon />} label="Flying" />;
+            return <Chip sx={{ bgcolor: "#A1BBEC", border: "1px solid" }} size="small" icon={<FlyingIcon />} label="Flying" />;
         case "ghost":
-            return <Chip sx={{ bgcolor: "#5F6DBC" }} size="small" icon={<GhostIcon />} label="Ghost" />;
+            return <Chip sx={{ bgcolor: "#5F6DBC", border: "1px solid" }} size="small" icon={<GhostIcon />} label="Ghost" />;
         case "grass":
-            return <Chip sx={{ bgcolor: "#5FBD58" }} size="small" icon={<GrassIcon />} label="Grass" />;
+            return <Chip sx={{ bgcolor: "#5FBD58", border: "1px solid" }} size="small" icon={<GrassIcon />} label="Grass" />;
         case "ground":
-            return <Chip sx={{ bgcolor: "#DA7C4D" }} size="small" icon={<GroundIcon />} label="Ground" />;
+            return <Chip sx={{ bgcolor: "#DA7C4D", border: "1px solid" }} size="small" icon={<GroundIcon />} label="Ground" />;
         case "ice":
-            return <Chip sx={{ bgcolor: "#75D0C1" }} size="small" icon={<IceIcon />} label="Ice" />;
+            return <Chip sx={{ bgcolor: "#75D0C1", border: "1px solid" }} size="small" icon={<IceIcon />} label="Ice" />;
         case "normal":
-            return <Chip sx={{ bgcolor: "#A0A29F" }} size="small" icon={<NormalIcon />} label="Normal" />;
+            return <Chip sx={{ bgcolor: "#A0A29F", border: "1px solid" }} size="small" icon={<NormalIcon />} label="Normal" />;
         case "poison":
-            return <Chip sx={{ bgcolor: "#B763CF" }} size="small" icon={<PoisonIcon />} label="Poison" />;
+            return <Chip sx={{ bgcolor: "#B763CF", border: "1px solid" }} size="small" icon={<PoisonIcon />} label="Poison" />;
         case "psychic":
-            return <Chip sx={{ bgcolor: "#FA8581" }} size="small" icon={<PsychicIcon />} label="Psychic" />;
+            return <Chip sx={{ bgcolor: "#FA8581", border: "1px solid" }} size="small" icon={<PsychicIcon />} label="Psychic" />;
         case "rock":
-            return <Chip sx={{ bgcolor: "#C9BB8A" }} size="small" icon={<RockIcon />} label="Rock" />;
+            return <Chip sx={{ bgcolor: "#C9BB8A", border: "1px solid" }} size="small" icon={<RockIcon />} label="Rock" />;
         case "steel":
-            return <Chip sx={{ bgcolor: "#5695A3" }} size="small" icon={<SteelIcon />} label="Steel" />;
+            return <Chip sx={{ bgcolor: "#5695A3", border: "1px solid" }} size="small" icon={<SteelIcon />} label="Steel" />;
         case "water":
-            return <Chip sx={{ bgcolor: "#539DDF" }} size="small" icon={<WaterIcon />} label="Water" />;
+            return <Chip sx={{ bgcolor: "#539DDF", border: "1px solid" }} size="small" icon={<WaterIcon />} label="Water" />;
     }
 }
 
