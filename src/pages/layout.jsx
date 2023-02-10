@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Fab, Grid, Paper, Chip, Stack } from "@mui/material";
+import { Fab, Grid, Paper, Chip, Stack, Box, Container } from "@mui/material";
 import { useSpring, animated } from '@react-spring/web';
 import { capitalize } from "./dex";
 import { BugIcon, DarkIcon, DragonIcon, ElectricIcon, FairyIcon, FightingIcon, FireIcon, FlyingIcon, GhostIcon, GrassIcon, GroundIcon, IceIcon, NormalIcon, PoisonIcon, PsychicIcon, RockIcon, SteelIcon, WaterIcon } from "../assets/icons";
@@ -59,13 +59,13 @@ export default function Arena() {
     const [springs, api] = useSpring(() => ({
         delay: 100,
         from: { x: -2000 },
-        to: { x: 0, y: 160 },
+        to: { x: 0 },
         config: {
             duration: 550
         }
     }))
     const [springsA, apiA] = useSpring(() => ({
-        from: { x: -3500, y: -30 }
+        from: { x: -3500 }
     }))
     const [springsT1, apiT1] = useSpring(() => ({
         from: { x: -4000 },
@@ -74,7 +74,7 @@ export default function Arena() {
         from: { x: -4000 },
     }))
     const [springsR, apiR] = useSpring(() => ({
-        from: { x: -2000, y:25, opacity: 0},
+        from: { x: -2000, opacity: 0 },
     }))
 
     const handleClick = () => {
@@ -110,9 +110,9 @@ export default function Arena() {
         })
         apiR.start({
             delay: 2900,
-            from: { x: -2000, y:25, opacity: 0},
+            from: { x: -2000, opacity: 0 },
             to: [
-                { x: 450, y: 25, opacity: 0 },
+                { x: -200, opacity: 0 },
                 { opacity: 1 }
             ],
             config: { duration: 500 }
@@ -121,8 +121,8 @@ export default function Arena() {
 
     const handleReset = () => {
         apiR.start({
-            from: { x: 450, y: 25, opacity: 1 },
-            to: { x: -2000, y:25, opacity: 0}   
+            from: { x: 450, opacity: 1 },
+            to: { x: -2000, opacity: 0 }
         })
         apiA.start({
             from: { x: 0 },
@@ -177,54 +177,56 @@ export default function Arena() {
 
     return (
         <div className="layout">
-            <div className="header">
-            </div>
-            <animated.div className="reset" style={{ ...springsR }} >
-                <Fab className="resetti" variant="extended" size="medium" color="error" onClick={() => {
+            <Box sx={{ height: { sm: "10vh", md: "15vh", lg: "13vh" } }} className="header">
+                <animated.div style={{ ...springsR }} >
+                    <Fab variant="extended" size="medium" color="error" onClick={() => {
                         localStorage.clear();
                         savedTeams = null;
                         handleReset();
                         setReset(state => !state);
-                }}>
-                    Reset
-                </Fab>
-            </animated.div>
-            <animated.div style={{ ...springs }} >
-                <Fab className="ready" variant="extended" size="medium" color="error" onClick={() => {
+                    }}>
+                        Reset
+                    </Fab>
+                </animated.div>
+            </Box>
+            <animated.div style={{ ...springs }} className="ready" >
+                <Fab  variant="extended" size="medium" color="error" onClick={() => {
                     handleClick()
                 }}>
                     Ready?
                 </Fab>
             </animated.div>
             <animated.div style={{ ...springsA }} >
-                <Paper sx={{ maxHeight: "80vh" }} elevation={12} className="arena">
-                    <Grid container >
+                <Paper sx={{ height: { sm: "85vh", md: "77vh", lg: "80vh" } }} elevation={12} className="arena">
+                    <Grid container sx={{ height: "100%", paddingX: "6em" }} spacing={0} >
                         {
                             team1 ?
-                                <Grid item xs={4} sx={{ paddingLeft: "2em" }} className="team1">
-                                    <Grid container sx={{ width: 500 }}>
+                                <Grid item xs={4} sx={{ height: "100%" }} className="team1">
+                                    <Grid container sx={{ height: "100%" }} columnSpacing={15}>
                                         {
                                             team1.map(pokemon => (
-                                                <Grid item xs={6} sx={{ textAlign: "center" }} key={pokemon.id} className="mon1">
+                                                <Grid item xs={6} key={pokemon.id} className="mon1">
                                                     <animated.div style={{ ...springsT1 }}>
-                                                        <Link to={`/dex/${pokemon.name}`} style={{ textDecoration: "none", color: "black" }} onClick={() => {
-                                                            localStorage.setItem("savedTeams", JSON.stringify(teams));
-                                                        }} >
-                                                            <img className="team1Icons" src={pokemon.sprites["front_default"]} />
-                                                            <p className="team1Names">{capitalize(pokemon.name)}</p>
-                                                        </Link>
-                                                        <br />
-                                                        {
-                                                            pokemon.types[1] ?
-                                                                <>
-                                                                    <Stack spacing={1} direction={"row"}>
-                                                                        <DisplayType type={pokemon.types[0].type.name} /><DisplayType type={pokemon.types[1].type.name} />
-                                                                    </Stack>
-                                                                </> :
-                                                                <>
-                                                                    <DisplayType type={pokemon.types[0].type.name} />
-                                                                </>
-                                                        }
+                                                        <Container>
+                                                            <Link to={`/dex/${pokemon.name}`} style={{ textDecoration: "none", color: "black" }} onClick={() => {
+                                                                localStorage.setItem("savedTeams", JSON.stringify(teams));
+                                                            }}>
+                                                                <Box component="img" sx={{height: {sm: 50, md: 50, lg: 80, xl: 150}}} src={pokemon.sprites["front_default"]} />
+                                                                <p className="team1Names">{capitalize(pokemon.name)}</p>
+                                                            </Link>
+                                                            <br />
+                                                            {
+                                                                pokemon.types[1] ?
+                                                                    <>
+                                                                        <Stack spacing={1} direction={"row"}>
+                                                                            <DisplayType type={pokemon.types[0].type.name} /><DisplayType type={pokemon.types[1].type.name} />
+                                                                        </Stack>
+                                                                    </> :
+                                                                    <>
+                                                                        <DisplayType type={pokemon.types[0].type.name} />
+                                                                    </>
+                                                            }
+                                                        </Container>
                                                     </animated.div>
                                                 </Grid>
                                             ))
@@ -235,41 +237,43 @@ export default function Arena() {
                                     <div>Your team is still loading...</div>
                                 </Grid>
                         }
-                        <Grid item xs={4} sx={{ marginLeft: "0.5em", marginRight: "-8em" }} className="vs" >
+                        <Grid item xs={4} sx={{}} className="vs" >
                         </Grid>
                         {
                             team2 ?
-                                <Grid item xs={3} sx={{ paddingRight: "0em" }} className="team2">
-                                    <Grid container sx={{ width: 500 }} >
+                                <Grid item xs={4} sx={{ height: "100%" }} className="team2">
+                                    <Grid container sx={{ height: "100%" }} columnSpacing={15} >
                                         {
                                             team2.map(pokemon => (
-                                                <Grid item xs={6} sx={{ textAlign: "center" }} key={pokemon.id} className="mon2">
+                                                <Grid item xs={6} key={pokemon.id} className="mon2">
                                                     <animated.div style={{ ...springsT2 }}>
-                                                        <Link to={`/dex/${pokemon.name}`} style={{ textDecoration: "none", color: "black" }} onClick={() => {
-                                                            localStorage.setItem("savedTeams", JSON.stringify(teams));
-                                                        }} >
-                                                            <img className="team2Icons" src={pokemon.sprites["front_default"]} />
-                                                            <p className="team2Names">{capitalize(pokemon.name)}</p>
-                                                        </Link>
-                                                        <br />
-                                                        {
-                                                            pokemon.types[1] ?
-                                                                <>
-                                                                    <Stack spacing={1} direction={"row"}>
-                                                                        <DisplayType type={pokemon.types[0].type.name} /><DisplayType type={pokemon.types[1].type.name} />
-                                                                    </Stack>
-                                                                </> :
-                                                                <>
-                                                                    <DisplayType type={pokemon.types[0].type.name} />
-                                                                </>
-                                                        }
+                                                        <Container>
+                                                            <Link to={`/dex/${pokemon.name}`} style={{ textDecoration: "none", color: "black" }} onClick={() => {
+                                                                localStorage.setItem("savedTeams", JSON.stringify(teams));
+                                                            }}>
+                                                                <Box component="img" sx={{height: {sm: 50, md: 50, lg: 80, xl: 150}}} src={pokemon.sprites["front_default"]} />
+                                                                <p className="team2Names">{capitalize(pokemon.name)}</p>
+                                                            </Link>
+                                                            <br />
+                                                            {
+                                                                pokemon.types[1] ?
+                                                                    <>
+                                                                        <Stack spacing={1} direction={"row"}>
+                                                                            <DisplayType type={pokemon.types[0].type.name} /><DisplayType type={pokemon.types[1].type.name} />
+                                                                        </Stack>
+                                                                    </> :
+                                                                    <>
+                                                                        <DisplayType type={pokemon.types[0].type.name} />
+                                                                    </>
+                                                            }
+                                                        </Container>
                                                     </animated.div>
                                                 </Grid>
                                             ))
                                         }
                                     </Grid>
                                 </Grid> :
-                                <Grid item>
+                                <Grid item xs={4}>
                                     <div>Your team is still loading...</div>
                                 </Grid>
                         }

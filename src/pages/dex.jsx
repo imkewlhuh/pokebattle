@@ -37,7 +37,7 @@ function Effective(props) {
 
     switch (props.type) {
         case "normal":
-            return <Card sx={{ bgcolor: "#A0A29F", maxWidth: 350, minHeight: "50vh" }} >
+            return <Card sx={{ bgcolor: "#A0A29F", maxWidth:{md: 250, lg: 450, xl: 500}, maxHeight: {md: 300, lg: 400, xl: 550} }} >
                 <br />
                 <DisplayType type="normal" />
                 <CardContent>
@@ -51,7 +51,7 @@ function Effective(props) {
                 </CardContent>
             </Card >;
         case "fighting":
-            return <Card sx={{ bgcolor: "#D3425F", maxWidth: 350, minHeight: "50vh" }} >
+            return <Card sx={{ bgcolor: "#D3425F", maxWidth:{md: 250, lg: 450, xl: 500}, maxHeight: {md: 300, lg: 400, xl: 550} }} >
                 <br />
                 <DisplayType type="fighting" />
                 <CardContent>
@@ -67,7 +67,7 @@ function Effective(props) {
                 </CardContent>
             </Card >
         case "flying":
-            return <Card sx={{ bgcolor: "#A1BBEC", maxWidth: 350, minHeight: "50vh" }} >
+            return <Card sx={{ bgcolor: "#A1BBEC", maxWidth:{md: 250, lg: 450, xl: 500}, maxHeight: {md: 300, lg: 400, xl: 550} }} >
                 <br />
                 <DisplayType type="flying" />
                 <CardContent>
@@ -83,7 +83,7 @@ function Effective(props) {
                 </CardContent>
             </Card >
         case "poison":
-            return <Card sx={{ bgcolor: "#B763CF", maxWidth: 350, minHeight: "50vh" }} >
+            return <Card sx={{ bgcolor: "#B763CF", maxWidth:{md: 250, lg: 450, xl: 500}, maxHeight: {md: 300, lg: 400, xl: 550} }} >
                 <br />
                 <DisplayType type="poison" />
                 <CardContent>
@@ -99,7 +99,7 @@ function Effective(props) {
                 </CardContent>
             </Card >
         case "ground":
-            return <Card sx={{ bgcolor: "#DA7C4D", maxWidth: 350, minHeight: "50vh" }} >
+            return <Card sx={{ bgcolor: "#DA7C4D", maxWidth:{md: 250, lg: 450, xl: 500}, maxHeight: {md: 300, lg: 400, xl: 550} }} >
                 <br />
                 <DisplayType type="ground" />
                 <CardContent>
@@ -117,7 +117,7 @@ function Effective(props) {
                 </CardContent>
             </Card >
         case "rock":
-            return <Card sx={{ bgcolor: "#C9BB8A", maxWidth: 350, minHeight: "50vh" }} >
+            return <Card sx={{ bgcolor: "#C9BB8A", maxWidth:{md: 250, lg: 450, xl: 500}, maxHeight: {md: 300, lg: 400, xl: 550} }} >
                 <br />
                 <DisplayType type="rock" />
                 <CardContent>
@@ -131,7 +131,7 @@ function Effective(props) {
                 </CardContent>
             </Card >
         case "bug":
-            return <Card sx={{ bgcolor: "#92BC2C", maxWidth: 350, minHeight: "50vh" }} >
+            return <Card sx={{ bgcolor: "#92BC2C", maxWidth:{md: 250, lg: 450, xl: 500}, maxHeight: {md: 300, lg: 400, xl: 550} }} >
                 <br />
                 <DisplayType type="bug" />
                 <CardContent>
@@ -145,7 +145,7 @@ function Effective(props) {
                 </CardContent>
             </Card >
         case "ghost":
-            return <Card sx={{ bgcolor: "#5F6DBC", maxWidth: 350, minHeight: "50vh" }} >
+            return <Card sx={{ bgcolor: "#5F6DBC", maxWidth:{md: 250, lg: 450, xl: 500}, maxHeight: {md: 300, lg: 400, xl: 550} }} >
                 <br />
                 <DisplayType type="ghost" />
                 <CardContent>
@@ -163,7 +163,7 @@ function Effective(props) {
                 </CardContent>
             </Card >
         case "steel":
-            return <Card sx={{ bgcolor: "#5695A3", maxWidth: 350, minHeight: "50vh" }} >
+            return <Card sx={{ bgcolor: "#5695A3", maxWidth:{md: 250, lg: 450, xl: 500}, maxHeight: {md: 300, lg: 400, xl: 550} }} >
                 <br />
                 <DisplayType type="steel" />
                 <CardContent>
@@ -179,7 +179,7 @@ function Effective(props) {
                 </CardContent>
             </Card >
         case "fire":
-            return <Card sx={{ bgcolor: "#FBA54C", maxWidth: 350, minHeight: "50vh" }} >
+            return <Card sx={{ bgcolor: "#FBA54C", maxWidth:{md: 250, lg: 450, xl: 500}, maxHeight: {md: 300, lg: 400, xl: 550} }} >
                 <br />
                 <DisplayType type="fire" />
                 <CardContent>
@@ -193,7 +193,7 @@ function Effective(props) {
                 </CardContent>
             </Card >
         case "water":
-            return <Card sx={{ bgcolor: "#539DDF", maxWidth: 350, minHeight: "50vh" }} >
+            return <Card sx={{ bgcolor: "#539DDF", maxWidth:{md: 250, lg: 450, xl: 500}, maxHeight: {md: 300, lg: 400, xl: 550} }} >
                 <br />
                 <DisplayType type="water" />
                 <CardContent>
@@ -207,7 +207,7 @@ function Effective(props) {
                 </CardContent>
             </Card >
         case "grass":
-            return <Card sx={{ bgcolor: "#5FBD58", maxWidth: 350, minHeight: "50vh" }} >
+            return <Card sx={{ bgcolor: "#5FBD58", maxWidth:{md: 250, lg: 450, xl: 500}, maxHeight: {md: 300, lg: 400, xl: 550} }} >
                 <br />
                 <DisplayType type="grass" />
                 <CardContent>
@@ -221,7 +221,7 @@ function Effective(props) {
                 </CardContent>
             </Card >
         case "electric":
-            return <Card sx={{ bgcolor: "#F2D94E", maxWidth: 350, minHeight: "50vh" }} >
+            return <Card sx={{ bgcolor: "#F2D94E", maxWidth:{md: 250, lg: 450, xl: 500}, maxHeight: {md: 300, lg: 400, xl: 550} }} >
                 <br />
                 <DisplayType type="electric" />
                 <CardContent>
@@ -237,7 +237,7 @@ function Effective(props) {
                 </CardContent>
             </Card >
         case "psychic":
-            return <Card sx={{ bgcolor: "#FA8581", maxWidth: 350, minHeight: "50vh" }} >
+            return <Card sx={{ bgcolor: "#FA8581", maxWidth:{md: 250, lg: 450, xl: 500}, maxHeight: {md: 300, lg: 400, xl: 550} }} >
                 <br />
                 <DisplayType type="psychic" />
                 <CardContent>
@@ -253,7 +253,7 @@ function Effective(props) {
                 </CardContent>
             </Card >
         case "ice":
-            return <Card sx={{ bgcolor: "#75D0C1", maxWidth: 350, minHeight: "50vh" }} >
+            return <Card sx={{ bgcolor: "#75D0C1", maxWidth:{md: 250, lg: 450, xl: 500}, maxHeight: {md: 300, lg: 400, xl: 550} }} >
                 <br />
                 <DisplayType type="ice" />
                 <CardContent>
@@ -267,7 +267,7 @@ function Effective(props) {
                 </CardContent>
             </Card >
         case "dragon":
-            return <Card sx={{ bgcolor: "#0C69C8", maxWidth: 350, minHeight: "50vh" }} >
+            return <Card sx={{ bgcolor: "#0C69C8", maxWidth:{md: 250, lg: 450, xl: 500}, maxHeight: {md: 300, lg: 400, xl: 550} }} >
                 <br />
                 <DisplayType type="dragon" />
                 <CardContent>
@@ -283,7 +283,7 @@ function Effective(props) {
                 </CardContent>
             </Card >
         case "dark":
-            return <Card sx={{ bgcolor: "#595761", maxWidth: 350, minHeight: "50vh" }} >
+            return <Card sx={{ bgcolor: "#595761", maxWidth:{md: 250, lg: 450, xl: 500}, maxHeight: {md: 300, lg: 400, xl: 550} }} >
                 <br />
                 <DisplayType type="dark" />
                 <CardContent>
@@ -299,7 +299,7 @@ function Effective(props) {
                 </CardContent>
             </Card >
         case "fairy":
-            return <Card sx={{ bgcolor: "#EE90E6", maxWidth: 350, minHeight: "50vh" }} >
+            return <Card sx={{ bgcolor: "#EE90E6", maxWidth:{md: 250, lg: 450, xl: 500}, maxHeight: {md: 300, lg: 400, xl: 550} }} >
                 <br />
                 <DisplayType type="fairy" />
                 <CardContent>
@@ -331,8 +331,8 @@ export default function DexEntry() {
 
     return (
         <div className="dex">
-            <Grid container sx={{ height: "6em", alignItems: "center" }} className="dexHeader">
-                <Grid item xs={2} sx={{ paddingX: "2.12em" }} >
+            <Grid container sx={{ height: {md: "5em", lg: "6em", xl: "8.5em"}, alignItems: "center" }}>
+                <Grid item xs={2} sx={{ paddingX: {md: "1.4em", lg: "2.5em", xl: "4em"} }} >
                     <Link to={`..`}>
                         <Fab size="large" >
                             <CatchingPokemonIcon color="error" fontSize="large" />
@@ -340,26 +340,26 @@ export default function DexEntry() {
                     </Link>
                 </Grid>
                 <Grid item >
-                    <h1 className="dexName">{mon.id} {capitalize(mon.name)}</h1>
+                    <h1>{mon.id} {capitalize(mon.name)}</h1>
                 </Grid>
             </Grid>
-            <Grid container sx={{ alignItems: "center", paddingX: "2em" }} className="dexMon">
+            <Grid container sx={{ alignItems: "center", paddingTop: { xl: "6em"} }} className="dexMon">
                 {
                     mon.types[1] ?
                         <>
-                            <Grid item xs={4} sx={{ paddingLeft: "2em" }} className="effective">
+                            <Grid item xs={4} sx={{ paddingLeft: {lg: "3em", xl: "5em"} }}>
                                 <Effective type={type1} />
                             </Grid>
                             <Grid item xs={4} >
                                 <img className="dexIcon" src={mon.sprites.other["official-artwork"]["front_default"]} />
                             </Grid>
-                            <Grid item xs={4} sx={{ paddingLeft: "2em" }} className="effective">
+                            <Grid item xs={4} sx={{ paddingLeft: {lg: "1em", xl: "3em"}, paddingRight: {lg: "3em"} }}>
                                 <Effective type={type2} />
                             </Grid>
                         </>
                         :
                         <>
-                            <Grid item xs={4} sx={{ paddingLeft: "1npem" }} className="effective">
+                            <Grid item xs={4} sx={{ paddingLeft: {lg: "3em", xl: "5em"} }}>
                                 <Effective type={type1} />
                             </Grid>
                             <Grid item xs={4}>
