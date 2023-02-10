@@ -202,7 +202,7 @@ export default function Arena() {
                         {
                             team1 ?
                                 <Grid item xs={4} sx={{ height: "100%" }} className="team1">
-                                    <Grid container sx={{ height: "100%" }} columnSpacing={15}>
+                                    <Grid container sx={{ height: "100%" }} columnSpacing={25}>
                                         {
                                             team1.map(pokemon => (
                                                 <Grid item xs={6} key={pokemon.id} className="mon1">
@@ -242,7 +242,7 @@ export default function Arena() {
                         {
                             team2 ?
                                 <Grid item xs={4} sx={{ height: "100%" }} className="team2">
-                                    <Grid container sx={{ height: "100%" }} columnSpacing={15} >
+                                    <Grid container sx={{ height: "100%" }} columnSpacing={25} >
                                         {
                                             team2.map(pokemon => (
                                                 <Grid item xs={6} key={pokemon.id} className="mon2">
